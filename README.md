@@ -3,8 +3,6 @@ openai-whisper-api
 
 This is a sample speech transcription web application implementing `OpenAI` [Speech to Text API](https://platform.openai.com/docs/guides/speech-to-text) based on [Whisper](https://openai.com/research/whisper), an automatic speech recognition (ASR) system, built using [Next 13](https://nextjs.org/), the `React` framework.
 
-以下は、OpenAIテキスト読み上げAPIを実装したサンプルスピーチ転写アプリです。このアプリは、自動音声認識（ASR）システムのWhisperに基づいて構築され、ReactフレームワークのNext 13を使用しています。
-
 > **Update:** Added [code to trim the silent parts of the audio file](#using-ffmpeg-to-trim-audio-file) and [Safari and mobile recording should now be fixed](#known-issues).
 
 > **Update:** Now using [v4.20 OpenAI Node module](https://www.npmjs.com/package/openai)

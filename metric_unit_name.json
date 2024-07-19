@@ -1,0 +1,247 @@
+[
+  {
+    "metric": "calculated_radiation_growing_light",
+    "unit": "joule_cm2",
+    "name": "Grow Light Radiation"
+  },
+  {
+    "metric": "co2",
+    "unit": "ppm",
+    "name": "CO2"
+  },
+  {
+    "metric": "flower_clusters",
+    "unit": "count",
+    "name": "Flowering Trusses"
+  },
+  {
+    "metric": "flower_clusters_per_plant",
+    "unit": "count",
+    "name": "Flowering Trusses per Plant"
+  },
+  {
+    "metric": "flower_height",
+    "unit": "cm",
+    "name": "Flowering Truss Height"
+  },
+  {
+    "metric": "flower_height",
+    "unit": "inches",
+    "name": "Flowering Truss Height"
+  },
+  {
+    "metric": "flower_height_range",
+    "unit": "cm",
+    "name": "Flowering Truss Height Range"
+  },
+  {
+    "metric": "flowering_speed",
+    "unit": "flowering_trusses_per_week",
+    "name": "Flowering Speed"
+  },
+  {
+    "metric": "fruit_clusters",
+    "unit": "count",
+    "name": "Fruit Clusters"
+  },
+  {
+    "metric": "fruit_clusters_per_plant",
+    "unit": "count",
+    "name": "Fruit Clusters per Plant"
+  },
+  {
+    "metric": "fruit_per_cluster",
+    "unit": "count",
+    "name": "Fruits per Cluster"
+  },
+  {
+    "metric": "grade_1",
+    "unit": "count",
+    "name": "Fruit Grade 1"
+  },
+  {
+    "metric": "grade_2",
+    "unit": "count",
+    "name": "Fruit Grade 2"
+  },
+  {
+    "metric": "grade_3",
+    "unit": "count",
+    "name": "Fruit Grade 3"
+  },
+  {
+    "metric": "grade_4",
+    "unit": "count",
+    "name": "Fruit Grade 4"
+  },
+  {
+    "metric": "grade_5",
+    "unit": "count",
+    "name": "Fruit Grade 5"
+  },
+  {
+    "metric": "greenhouse_temperature",
+    "unit": "celsius",
+    "name": "Greenhouse Temperature"
+  },
+  {
+    "metric": "head_count",
+    "unit": "count",
+    "name": "Head Count"
+  },
+  {
+    "metric": "head_count_per_m2",
+    "unit": "count",
+    "name": "Head Density"
+  },
+  {
+    "metric": "head_count_per_plant",
+    "unit": "count",
+    "name": "Head Count per Plant"
+  },
+  {
+    "metric": "head_height",
+    "unit": "cm",
+    "name": "Head Height"
+  },
+  {
+    "metric": "head_height",
+    "unit": "inches",
+    "name": "Head Height"
+  },
+  {
+    "metric": "head_height_range",
+    "unit": "cm",
+    "name": "Head Height Range"
+  },
+  {
+    "metric": "head_to_flowering_truss",
+    "unit": "cm",
+    "name": "Head to Flowering Truss Distance"
+  },
+  {
+    "metric": "humidity_deficit",
+    "unit": "gr_m3",
+    "name": "Humidity Deficit"
+  },
+  {
+    "metric": "mast_co2_delta",
+    "unit": "ppm",
+    "name": "CO2 Delta"
+  },
+  {
+    "metric": "mast_co2_high",
+    "unit": "ppm",
+    "name": "Top CO2"
+  },
+  {
+    "metric": "mast_co2_low",
+    "unit": "ppm",
+    "name": "Bottom CO2"
+  },
+  {
+    "metric": "mast_par_delta",
+    "unit": "par",
+    "name": "PAR Delta"
+  },
+  {
+    "metric": "mast_par_high",
+    "unit": "par",
+    "name": "Top PAR"
+  },
+  {
+    "metric": "mast_par_low",
+    "unit": "par",
+    "name": "Bottom PAR"
+  },
+  {
+    "metric": "mast_pressure_delta",
+    "unit": "kpa",
+    "name": "Pressure Delta"
+  },
+  {
+    "metric": "mast_pressure_high",
+    "unit": "kpa",
+    "name": "Top Pressure"
+  },
+  {
+    "metric": "mast_pressure_low",
+    "unit": "kpa",
+    "name": "Bottom Pressure"
+  },
+  {
+    "metric": "mast_relative_humidity_delta",
+    "unit": "percent",
+    "name": "Relative Humidity Delta"
+  },
+  {
+    "metric": "mast_relative_humidity_high",
+    "unit": "percent",
+    "name": "Top Relative Humidity"
+  },
+  {
+    "metric": "mast_relative_humidity_low",
+    "unit": "percent",
+    "name": "Bottom Relative Humidity"
+  },
+  {
+    "metric": "mast_temperature_delta",
+    "unit": "celsius",
+    "name": "Temperature Delta "
+  },
+  {
+    "metric": "mast_temperature_high",
+    "unit": "celsius",
+    "name": "Top Temperature"
+  },
+  {
+    "metric": "mast_temperature_low",
+    "unit": "celsius",
+    "name": "Bottom Temperature"
+  },
+  {
+    "metric": "outside_radiation",
+    "unit": "watt_m2",
+    "name": "Outside Radiation"
+  },
+  {
+    "metric": "outside_radiation_sum_today",
+    "unit": "j_cm2",
+    "name": "Outside Daily Radiation Sum"
+  },
+  {
+    "metric": "outside_radiation_sum_today",
+    "unit": "joule_cm2",
+    "name": "Outside Daily Radiation Sum"
+  },
+  {
+    "metric": "outside_temperature",
+    "unit": "celsius",
+    "name": "Outside Temperature"
+  },
+  {
+    "metric": "plant_light",
+    "unit": "joule_cm2",
+    "name": "Radiation"
+  },
+  {
+    "metric": "relative_humidity",
+    "unit": "celsius",
+    "name": "Relative Humidity"
+  },
+  {
+    "metric": "relative_humidity",
+    "unit": "percent",
+    "name": "Relative Humidity"
+  },
+  {
+    "metric": "stem_width",
+    "unit": "mm",
+    "name": "Stem Width"
+  },
+  {
+    "metric": "weekly_head_height_growth",
+    "unit": "cm_per_week",
+    "name": "Weekly Head Height Growth"
+  }
+]

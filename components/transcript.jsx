@@ -32,6 +32,8 @@ export default function Transcript({
     filename = '',
     datetime = '',
     data = '',
+    location = undefined,
+    measurements = undefined,
     onClick = undefined,
     onDelete = undefined,
 }) {
@@ -43,11 +45,11 @@ export default function Transcript({
     const tokens = data.split("\n")
     for (let i = 0; i < tokens.length; i++) {
         const s = tokens[i].trim()
-        if(s.indexOf(':') > 0 && s.indexOf('-->') > 0) {
+        if (s.indexOf(':') > 0 && s.indexOf('-->') > 0) {
             index++
             items.push({ timestamp: s, text: '' })
             flag = true
-        } else if(flag) {
+        } else if (flag) {
             items[index].text = s
             flag = false
         }
@@ -63,23 +65,45 @@ export default function Transcript({
 
     return (
         <div className={classes.container} onClick={onClick}>
-            <div className={classes.top}>
-                <div className={classes.datetime}>{ formatDateTime(datetime) }</div>
-                <div onClick={handleDelete} className={classes.iconButton}>
-                    <DeleteIcon color="#fff" />
+            <div className={classes.unstructured}>
+                <div className={classes.top}>
+                    <div className={classes.datetime}>{formatDateTime(datetime)}</div>
+                    <div onClick={handleDelete} className={classes.iconButton}>
+                        <DeleteIcon color="#fff" />
+                    </div>
+                </div>
+                <div className={classes.list}>
+                    {
+                        items.map((item, index) => {
+                            return (
+                                <div key={index} className={classes.item}>
+                                    <div className={classes.timestamp}>{item.timestamp}</div>
+                                    <div className={classes.text}>{item.text}</div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
-            <div className={classes.list}>
-            {
-                items.map((item, index) => {
-                    return (
-                        <div key={index} className={classes.item}>
-                            <div className={classes.timestamp}>{ item.timestamp }</div>
-                            <div className={classes.text}>{ item.text }</div>
-                        </div>
-                    )
-                })
-            }
+            <div className={classes.structured}>
+                <div className={classes.top}>
+                    <div className={classes.label}>Location: </div>
+                    <div className={classes.pill}><div className={classes.key}>Greenhouse: </div><div>{location.greenhouse}</div></div>
+                    <div className={classes.pill}><div className={classes.key}>Row: </div><div>{location.row}</div></div>
+                </div>
+                <div className={classes.top}>
+                    <div className={classes.label}>Metrics: </div>
+                    {
+                        measurements.map((item, index) => {
+                            return (
+                                <div key={index} className={classes.pill}>
+                                    <div className={classes.key}>{item.metric}: </div>
+                                    <div>{item.value}</div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )
@@ -98,6 +122,9 @@ Transcript.propTypes = {
      * Transcription items
      */
     data: PropTypes.string,
+
+    location: PropTypes.object,
+    measurements: PropTypes.array,
     /**
      * Click event handler
      */

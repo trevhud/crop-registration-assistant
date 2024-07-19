@@ -12,13 +12,14 @@ const port = 3006
 const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
 
-const httpsOptions = {
-    key: fs.readFileSync('./key.pem'),
-    cert: fs.readFileSync('./cert.pem')
-}
+// const httpsOptions = {
+//     key: fs.readFileSync('./key.pem'),
+//     cert: fs.readFileSync('./cert.pem')
+// }
 
 app.prepare().then(() => {
-    createServer(httpsOptions, (req, res) => {
+    // createServer(httpsOptions, (req, res) => {
+    createServer({}, (req, res) => {
 
         const parsedUrl = parse(req.url, true)
         handle(req, res, parsedUrl)

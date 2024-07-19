@@ -30,7 +30,7 @@ export default function MainPage() {
     const language = useAppStore((state) => state.language)
     const temperature = useAppStore((state) => state.temperature)
     const endpoint = useAppStore((state) => state.endpoint)
-    
+
     const listRef = React.useRef(null)
     const mediaRef = React.useRef()
     const chunksRef = React.useRef([])
@@ -65,10 +65,10 @@ export default function MainPage() {
     const [openModal, setOpenModal] = React.useState(false)
 
     const [isMounted, setMounted] = React.useState(false)
-    
+
 
     React.useEffect(() => {
-        
+
         abortControllerRef.current = new AbortController()
         setMounted(true)
 
@@ -77,12 +77,12 @@ export default function MainPage() {
             try {
 
                 setMounted(false)
-                
-                if(abortControllerRef.current) {
+
+                if (abortControllerRef.current) {
                     abortControllerRef.current.abort()
                 }
 
-            } catch(err) {
+            } catch (err) {
                 console.log(err)
             }
 
@@ -105,33 +105,33 @@ export default function MainPage() {
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
             navigator.mediaDevices.getUserMedia({ audio: true }).then(handleStream).catch(handleError)
-    
+
         } else {
-    
+
             setErrorMessage('Media devices not supported')
-            
+
         }
 
         return () => {
 
             try {
-                
+
                 window.cancelAnimationFrame(animFrame.current)
 
-            } catch(error) {
+            } catch (error) {
                 console.log(error)
             }
 
         }
 
-    }, [minDecibels, maxPause,language, endpoint, temperature])
+    }, [minDecibels, maxPause, language, endpoint, temperature])
 
     React.useEffect(() => {
 
-        if(isCountDown) {
+        if (isCountDown) {
 
             timerCount.current = setInterval(() => {
-                
+
                 countRef.current += 100
 
             }, 100)
@@ -152,13 +152,13 @@ export default function MainPage() {
     const handleStream = (stream) => {
 
         try {
-            
+
             mediaRef.current = new MediaRecorder(stream, {
                 audioBitsPerSecond: 128000,
                 mimeType: 'audio/webm;codecs=opus',
             })
 
-        } catch(error) {
+        } catch (error) {
 
             console.log(error)
 
@@ -174,7 +174,7 @@ export default function MainPage() {
 
         mediaRef.current.addEventListener('dataavailable', handleData)
         mediaRef.current.addEventListener("stop", handleStop)
-        
+
         setReady(true)
 
         checkAudioLevel(stream)
@@ -205,11 +205,11 @@ export default function MainPage() {
                 }
             }
 
-            if(soundDetected === true) {
+            if (soundDetected === true) {
 
-                if(recordRef.current) {
-                    
-                    if(countDownRef.current) {
+                if (recordRef.current) {
+
+                    if (countDownRef.current) {
 
                         setCountDown(false)
                         countDownRef.current = false
@@ -219,13 +219,13 @@ export default function MainPage() {
 
                 } else {
 
-                    if(startRef.current === startStates.active) {
+                    if (startRef.current === startStates.active) {
 
                         recordDateTime.current = (new Date()).toISOString()
 
                         setRecording(true)
                         recordRef.current = true
-                        
+
                         setCountDown(false)
                         countDownRef.current = false
                         countRef.current = 0
@@ -235,20 +235,20 @@ export default function MainPage() {
                     }
 
                 }
-                
+
             } else {
 
-                if(recordRef.current) {
+                if (recordRef.current) {
 
-                    if(countDownRef.current) {
+                    if (countDownRef.current) {
 
-                        if(countRef.current >= maxPause) {
+                        if (countRef.current >= maxPause) {
 
-                            if(startRef.current === startStates.active) {
+                            if (startRef.current === startStates.active) {
 
                                 setRecording(false)
                                 recordRef.current = false
-                                
+
                                 setCountDown(false)
                                 countDownRef.current = false
                                 countRef.current = 0
@@ -268,7 +268,7 @@ export default function MainPage() {
                     }
 
                 }
-                
+
             }
 
             animFrame.current = window.requestAnimationFrame(detectSound)
@@ -276,7 +276,7 @@ export default function MainPage() {
         }
 
         animFrame.current = window.requestAnimationFrame(detectSound)
-        
+
     }
 
     const handleData = (e) => {
@@ -287,18 +287,55 @@ export default function MainPage() {
 
     const handleStop = () => {
 
-        const blob = new Blob(chunksRef.current, {type: 'audio/webm;codecs=opus'})
-        
+        const blob = new Blob(chunksRef.current, { type: 'audio/webm;codecs=opus' })
+
         const datetime = recordDateTime.current
         const name = `file${Date.now()}` + Math.round(Math.random() * 100000)
         const file = new File([blob], `${name}.webm`)
 
         chunksRef.current = []
-        
+
         setSendCount((prev) => prev + 1)
 
         sendData(name, datetime, file)
 
+    }
+
+    const sendTranscript = async (data) => {
+        let formData = new FormData()
+        formData.append('data', data)
+
+        try {
+
+            const url = '/api/assistant'
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                },
+                body: formData,
+                signal: abortControllerRef.current.signal,
+            })
+
+            if (!response.ok) {
+
+                /**
+                 * I am assuming that all 500 errors will be caused by
+                 * problem in accessing the remote API endpoint for simplicity.
+                 */
+                if (response.status === 500) {
+                    setOpenSnack(true)
+                }
+
+            }
+
+            const result = await response.json()
+
+            return result.data;
+
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const sendData = async (name, datetime, file) => {
@@ -319,7 +356,7 @@ export default function MainPage() {
 
         try {
 
-            const url = '/api/'
+            const url = '/api/whisper'
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -328,14 +365,14 @@ export default function MainPage() {
                 body: formData,
                 signal: abortControllerRef.current.signal,
             })
-    
-            if(!response.ok) {
-                
+
+            if (!response.ok) {
+
                 /**
                  * I am assuming that all 500 errors will be caused by
                  * problem in accessing the remote API endpoint for simplicity.
                  */
-                if(response.status === 500) {
+                if (response.status === 500) {
                     setOpenSnack(true)
                 }
 
@@ -345,28 +382,35 @@ export default function MainPage() {
 
             setSendCount((prev) => prev - 1)
 
-            console.log("[received data]", (new Date()).toLocaleTimeString())
+            console.log("[received data]", (new Date()).toLocaleTimeString(), result)
+
+            const data = result?.data
+
+            const structuredResponse = await sendTranscript(data)
+
+            // merge the result and structuredResponse objects
+            const merged = { ...result, ...structuredResponse }
 
             /**
              * verify if result does not contain any useful data, disregard
              */
-            const data = result?.data
-            if(data) {
+
+            if (data) {
 
                 /**
                  * we will check if there is timestamp
                  * we are using vtt format so we should always have it
                  */
-                if(data.indexOf(':') > 0 && data.indexOf("-->") > 0) {
+                if (data.indexOf(':') > 0 && data.indexOf("-->") > 0) {
 
-                    addDataItems(result)
+                    addDataItems(merged)
 
                 }
 
             }
-            
 
-        } catch(err) {
+
+        } catch (err) {
             console.log(err)
             setSendCount((prev) => prev - 1)
         }
@@ -375,7 +419,7 @@ export default function MainPage() {
 
     const handleStart = () => {
 
-        if(startRef.current === startStates.default) {
+        if (startRef.current === startStates.default) {
 
             startRef.current = startStates.active
 
@@ -383,13 +427,13 @@ export default function MainPage() {
 
         } else {
 
-            if(mediaRef.current.state !== 'inactive') {
+            if (mediaRef.current.state !== 'inactive') {
                 mediaRef.current.stop()
             }
 
             setRecording(false)
             recordRef.current = false
-            
+
             setCountDown(false)
             countDownRef.current = false
             countRef.current = 0
@@ -430,10 +474,10 @@ export default function MainPage() {
     }
 
     const handleDelete = (file) => {
-        
+
         setAudioFile(file)
         setOpenModal(true)
-        
+
     }
 
     const handleCloseModal = () => {
@@ -443,7 +487,7 @@ export default function MainPage() {
     }
 
     const handleClickModal = () => {
-        
+
         deleteDataItem(audioFile)
 
         setAudioFile('')
@@ -454,45 +498,45 @@ export default function MainPage() {
     return (
         <div className={classes.container}>
             <div ref={listRef} className={classes.main}>
-            {
-                !isReady &&
-                <div className={classes.mainError}>
-                    <span className={classes.error}>{ errorMessage }</span>
-                </div>
-            }
-            {
-                (isMounted && isReady && transcripts.length === 0) &&
-                <div className={classes.mainError}>
-                    <span className={classes.info}>No transcripts</span>
-                </div>
-            }
-            {
-                (isMounted && isReady && transcripts.length > 0) &&
-                <div className={classes.list}>
-                    {
-                        transcripts.map((item) => {
-                            return (
-                                <Transcript
-                                key={item.filename}
-                                {...item}
-                                onClick={() => handleClickTranscript(item.filename)}
-                                onDelete={handleDelete}
-                                />
-                            )
-                        })
-                    }
-                </div>
-            }
+                {
+                    !isReady &&
+                    <div className={classes.mainError}>
+                        <span className={classes.error}>{errorMessage}</span>
+                    </div>
+                }
+                {
+                    (isMounted && isReady && transcripts.length === 0) &&
+                    <div className={classes.mainError}>
+                        <span className={classes.info}>No transcripts</span>
+                    </div>
+                }
+                {
+                    (isMounted && isReady && transcripts.length > 0) &&
+                    <div className={classes.list}>
+                        {
+                            transcripts.map((item) => {
+                                return (
+                                    <Transcript
+                                        key={item.filename}
+                                        {...item}
+                                        onClick={() => handleClickTranscript(item.filename)}
+                                        onDelete={handleDelete}
+                                    />
+                                )
+                            })
+                        }
+                    </div>
+                }
             </div>
             <div className={classes.control}>
                 <ControlPanel
-                state={startState}
-                isSignalOn={sendCount > 0}
-                isRecording={isRecording}
-                disabled={!isReady}
-                disabledSetting={!isReady || startState === startStates.active}
-                onStartClick={handleStart}
-                onSettingsClick={handleOpenSettings}
+                    state={startState}
+                    isSignalOn={sendCount > 0}
+                    isRecording={isRecording}
+                    disabled={!isReady}
+                    disabledSetting={!isReady || startState === startStates.active}
+                    onStartClick={handleStart}
+                    onSettingsClick={handleOpenSettings}
                 />
             </div>
             {
@@ -515,8 +559,8 @@ export default function MainPage() {
             }
             {
                 openModal && createPortal(
-                    <Modal text='Are you sure you want to delete this transcript?' 
-                    buttonText='Delete' onButtonClick={handleClickModal} onCancel={handleCloseModal} />,
+                    <Modal text='Are you sure you want to delete this transcript?'
+                        buttonText='Delete' onButtonClick={handleClickModal} onCancel={handleCloseModal} />,
                     document.body,
                 )
             }

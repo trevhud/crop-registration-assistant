@@ -3,9 +3,9 @@ import path from 'path'
 import { exec } from 'child_process'
 //import axios from 'axios'
 //import FormData from 'form-data'
-import { cleanInput } from '../../lib/utils'
+import { cleanInput } from '../../../lib/utils'
 
-import { whisper } from '../../services/openai'
+import { whisper } from '../../../services/openai'
 
 export async function POST(req) {
 
@@ -160,7 +160,7 @@ export async function POST(req) {
 
     try {
 
-        const result = await whisper({
+        const transcription = await whisper({
             mode: options.endpoint,
             file: fs.createReadStream(filepath),
             response_format: 'vtt',
@@ -168,7 +168,7 @@ export async function POST(req) {
             language: options.language,
         })
     
-        data = result
+        data = transcription
 
         console.log(options.endpoint, data)
 
