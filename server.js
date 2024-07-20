@@ -5,8 +5,8 @@ const fs = require('fs')
 
 const dev = process.env.NODE_ENV !== 'production'
 
-// const hostname = '192.168.1.80'
-// const port = 3006
+const hostname = '192.168.1.80'
+const port = 3006
 
 const app = next({ dev })
 // const app = next({ dev, hostname, port })
@@ -28,4 +28,3 @@ app.prepare().then(() => {
         console.log('\x1b[35m%s\x1b[0m', 'event', `- started ssl server on https://${hostname}:${port}`)
     })
 })
-
