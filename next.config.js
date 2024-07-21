@@ -9,27 +9,27 @@ const securityHeaders = [
 
 const nextConfig = {
   reactStrictMode: true,
-  webpack: function(config) {
-    config.module.rules.push({
-      test: /\.md$/,
-      use: 'raw-loader',
-    })
-    return config
-  },
-  env: {
-    siteTitle: 'Whisper API Sample App',
-  },
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: securityHeaders,
-      }
-    ]
-  },
-  serverRuntimeConfig: {
-    PROJECT_ROOT: __dirname,
-  },
+  // webpack: function(config) {
+  //   config.module.rules.push({
+  //     test: /\.md$/,
+  //     use: 'raw-loader',
+  //   })
+  //   return config
+  // },
+  // env: {
+  //   siteTitle: 'Whisper API Sample App',
+  // },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/:path*',
+  //       headers: securityHeaders,
+  //     }
+  //   ]
+  // },
+  // serverRuntimeConfig: {
+  //   PROJECT_ROOT: __dirname,
+  // },
   // trailingSlash: true
 };
 
