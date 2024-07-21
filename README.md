@@ -1,6 +1,8 @@
 crop-registration-assistant
 ====
 
+This is a application that allows for dictation of crop registration measurements and counts, turning the audio data into structured JSON.
+
 This is a sample speech transcription web application implementing `OpenAI` [Speech to Text API](https://platform.openai.com/docs/guides/speech-to-text) based on [Whisper](https://openai.com/research/whisper), an automatic speech recognition (ASR) system, built using [Next 13](https://nextjs.org/), the `React` framework.
 
 > **Update:** Added [code to trim the silent parts of the audio file](#using-ffmpeg-to-trim-audio-file) and [Safari and mobile recording should now be fixed](#known-issues).
