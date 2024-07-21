@@ -7,6 +7,8 @@ import { cleanInput } from '../../../lib/utils'
 
 import { whisper } from '../../../services/openai'
 
+const uploadPath = 'tmp'
+
 export async function POST(req) {
 
     const form = await req.formData()
@@ -29,12 +31,12 @@ export async function POST(req) {
 
     const buffer = Buffer.from( await blob.arrayBuffer() )
     const filename = `${name}.webm`
-    let filepath = `${path.join('public', 'uploads', filename)}`
+    let filepath = `${path.join('public', uploadPath, filename)}`
     
     fs.writeFileSync(filepath, buffer)
 
     // remove silence part of the audio
-    let outFile = `${path.join('public', 'uploads', `out-${filename}`)}`
+    let outFile = `${path.join('public', uploadPath, `out-${filename}`)}`
     const retval = await new Promise((resolve, reject) => {
 
         //const sCommand = `ffmpeg -i ${filepath} -af silenceremove=start_periods=1:start_silence=0.1:start_threshold=-50dB:detection=peak,aformat=dblp,areverse,silenceremove=start_periods=1:start_silence=0.1:start_threshold=-50dB:detection=peak,aformat=dblp,areverse ${outFile}`
@@ -88,7 +90,7 @@ export async function POST(req) {
 
     if(flagDoNotUseApi) {
         
-        const outputDir = path.join('public', 'uploads') 
+        const outputDir = path.join('public', uploadPath) 
 
         let sCommand = `whisper './${filepath}' --language ${options.language} --temperature ${options.temperature} --model tiny --output_dir '${outputDir}'`
         if(options.endpoint === 'translations') {

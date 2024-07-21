@@ -413,7 +413,7 @@ export default function MainPage() {
 
 
         } catch (err) {
-            console.log(err)
+            console.log('whisper call failed', err)
             setSendCount((prev) => prev - 1)
         }
 
