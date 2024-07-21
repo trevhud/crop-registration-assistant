@@ -1,4 +1,5 @@
 import MainPage from '../components/mainPage'
+import Head from 'next/head';
 
 export const metadata = {
     title: 'Whisper API Sample App',
@@ -19,9 +20,15 @@ export default function Page(props) {
     return (
         <>
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <title>{metadata.title}</title>
+                <meta name="description" content={metadata.description} />
+                <meta name="viewport" content={metadata.viewport} />
+                <link rel="icon" href={metadata.icons.icon} />
+                <link rel="shortcut icon" href={metadata.icons.shortcut} />
+                <link rel="apple-touch-icon" href={metadata.icons.apple} />
+                <link rel={metadata.icons.other.rel} href={metadata.icons.other.url} />
             </Head>
-            <MainPage {...props} />;
+            <MainPage {...props} />
         </>
     );
 }
