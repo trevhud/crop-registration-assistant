@@ -45,3 +45,6 @@ build
 *.sln
 *.sw?
 .vercel
+
+# Custom
+server.js
