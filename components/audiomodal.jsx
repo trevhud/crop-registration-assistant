@@ -27,7 +27,7 @@ export default function AudioModal({ file, onClose }) {
         audioDomRef.current.addEventListener('ended', handleEnded)
         audioDomRef.current.addEventListener('error', handleError)
 
-        audioDomRef.current.src = `/tmp/${file}`
+        audioDomRef.current.src = `tmp/${file}`
 
         return () => {
 

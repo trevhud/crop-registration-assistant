@@ -7,7 +7,7 @@ import { cleanInput } from '../../../lib/utils'
 
 import { whisper } from '../../../services/openai'
 
-const uploadPath = '/tmp'
+const uploadPath = 'tmp'
 
 export async function POST(req) {
 
