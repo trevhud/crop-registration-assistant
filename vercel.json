@@ -6,20 +6,10 @@
       "use": "@vercel/next"
     }
   ],
-  "rewrites": [
-    {
-      "source": "/_next/:path*",
-      "destination": "/_next/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ],
   "routes": [
     {
-      "src": "/api/server",
-      "dest": "/api/server.js"
+      "src": "/_next/static/(.*)",
+      "dest": "/_next/static/$1"
     },
     {
       "src": "/(.*)",
