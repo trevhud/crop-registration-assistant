@@ -6,7 +6,7 @@ import SignalIcon from './signal'
 
 import StartButton, { startStates } from './startbutton'
 
-import classes from './controlPanel.module.css'
+import classes from './/controlPanel.module.css'
 
 export default function ControlPanel({
     disabled = false,
@@ -20,11 +20,11 @@ export default function ControlPanel({
     return (
         <div className={classes.container}>
             <div className={classes.center}>
-                <StartButton 
-                disabled={disabled}
-                isRecording={isRecording}
-                state={state}
-                onClick={disabled ? () => {} : onStartClick}
+                <StartButton
+                    disabled={disabled}
+                    isRecording={isRecording}
+                    state={state}
+                    onClick={disabled ? () => { } : onStartClick}
                 />
             </div>
             <div className={classes.bottom}>
@@ -37,13 +37,13 @@ export default function ControlPanel({
                     {
                         disabledSetting &&
                         <div className={disabledSetting ? classes.disabledButton : classes.iconButton}>
-                            <SettingsIcon color={disabledSetting ? '#E6E6E6' : '#656565' } />
+                            <SettingsIcon color={disabledSetting ? '#E6E6E6' : '#656565'} />
                         </div>
                     }
                     {
                         !disabledSetting &&
-                        <div className={disabledSetting ? classes.disabledButton : classes.iconButton} onClick={disabledSetting ? () => {} : onSettingsClick}>
-                            <SettingsIcon color={disabledSetting ? '#E6E6E6' : '#656565' } />
+                        <div className={disabledSetting ? classes.disabledButton : classes.iconButton} onClick={disabledSetting ? () => { } : onSettingsClick}>
+                            <SettingsIcon color={disabledSetting ? '#E6E6E6' : '#656565'} />
                         </div>
                     }
                 </div>

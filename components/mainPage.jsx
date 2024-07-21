@@ -3,7 +3,7 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
 
-import classes from './mainPage.module.css'
+import classes from './/mainPage.module.css'
 
 import { startStates } from './startbutton'
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import classes from './snackbar.module.css'
+import classes from './/snackbar.module.css'
 
 export default function SnackBar({ text = '', onClose = undefined }) {
-    
+
     const [snackState, setSnackState] = React.useState(0)
-    
+
     React.useEffect(() => {
 
         setTimeout(() => {
@@ -14,12 +14,12 @@ export default function SnackBar({ text = '', onClose = undefined }) {
             setSnackState(1)
 
         }, 1300)
-        
+
     }, [])
 
     React.useEffect(() => {
 
-        if(snackState > 0) {
+        if (snackState > 0) {
 
             setTimeout(() => {
 
@@ -36,7 +36,7 @@ export default function SnackBar({ text = '', onClose = undefined }) {
     return (
         <div className={classContainer}>
             <div className={classes.content}>
-                <span className={classes.text}>{ text }</span>
+                <span className={classes.text}>{text}</span>
             </div>
         </div>
     )

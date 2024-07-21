@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import classes from './dialog.module.css'
+import classes from './/dialog.module.css'
 
 import languages from '../assets/language-support.json'
 
@@ -68,11 +68,11 @@ export default function Dialog({ onClose = undefined }) {
                     <div className={classes.item}>
                         <label className={classes.label}>Language</label>
                         <select className={classes.select} value={language} onChange={(e) => setLanguage(e.target.value)}>
-                        {
-                            languages.languages.map((item) => {
-                                return <option key={item.code} value={item.code}>{ item.name }</option>
-                            })
-                        }
+                            {
+                                languages.languages.map((item) => {
+                                    return <option key={item.code} value={item.code}>{item.name}</option>
+                                })
+                            }
                         </select>
                     </div>
                     <div className={classes.item}>

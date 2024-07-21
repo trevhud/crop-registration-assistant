@@ -10,7 +10,7 @@ import PauseIcon from './pause2'
 
 import AnimatedBars from './animatedBars'
 
-import classes from './startbutton.module.css'
+import classes from './/startbutton.module.css'
 
 const colorTypes = {
     default: '#666666',
@@ -27,22 +27,22 @@ export const startStates = {
     active: 'active',
 }
 
-function StartButton({ 
+function StartButton({
     disabled = false,
     isRecording = false,
-    state = startStates.default, 
-    onClick = undefined 
+    state = startStates.default,
+    onClick = undefined
 }) {
 
     let classContainer = state === startStates.default ? [classes.container, classes.default].join(' ') : [classes.container, classes.activate].join(' ')
-    if(disabled) {
+    if (disabled) {
         classContainer = [classes.container, classes.disabled].join(' ')
     }
 
     let classIcon = state === startStates.default ? classes.defaultColor : classes.activateColor
 
     return (
-        <div  onClick={disabled ? () => {} : onClick} className={classContainer} >
+        <div onClick={disabled ? () => { } : onClick} className={classContainer} >
             <div className={classes.center}>
                 <div className={classes.icon}>
                     {
@@ -50,7 +50,7 @@ function StartButton({
                     }
                 </div>
                 {
-                    (!disabled && state === startStates.active ) &&
+                    (!disabled && state === startStates.active) &&
                     <div className={classes.bars}>
                         <AnimatedBars start={isRecording} />
                     </div>
@@ -72,7 +72,7 @@ StartButton.propTypes = {
     /**
      * The button state
      */
-    state: PropTypes.oneOf([ startStates.default, startStates.active ]),
+    state: PropTypes.oneOf([startStates.default, startStates.active]),
     /**
      * Click handler
      */

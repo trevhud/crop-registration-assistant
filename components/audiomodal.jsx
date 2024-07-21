@@ -5,7 +5,7 @@ import PlayOffIcon from './playoff'
 import PlayIcon from './play'
 import PauseIcon from './pause'
 
-import classes from './audiomodal.module.css'
+import classes from './/audiomodal.module.css'
 
 export default function AudioModal({ file, onClose }) {
 
@@ -15,7 +15,7 @@ export default function AudioModal({ file, onClose }) {
     const [playState, setPlayState] = React.useState(0)
 
     const [isReady, setReady] = React.useState(false)
-    
+
     React.useEffect(() => {
 
         audioDomRef.current = new Audio()
@@ -33,12 +33,12 @@ export default function AudioModal({ file, onClose }) {
 
             try {
                 audioDomRef.current.remove()
-            } catch(error) {
+            } catch (error) {
                 console.log(error)
             }
 
         }
-            
+
     }, [])
 
     const handleEnded = React.useCallback(() => {
@@ -56,7 +56,7 @@ export default function AudioModal({ file, onClose }) {
         audioDomRef.current.currentTime = 0
         audioDomRef.current.removeEventListener('timeupdate', getDuration)
 
-        if(audioDomRef.current.duration === Infinity) {
+        if (audioDomRef.current.duration === Infinity) {
             setError(true)
             return
         }
@@ -67,7 +67,7 @@ export default function AudioModal({ file, onClose }) {
 
     const handleLoad = React.useCallback(async () => {
 
-        if(audioDomRef.current.duration === Infinity) {
+        if (audioDomRef.current.duration === Infinity) {
 
             //setError(true)
 
@@ -81,33 +81,33 @@ export default function AudioModal({ file, onClose }) {
         }
 
     }, [])
-    
+
     const handleClick = async (e) => {
 
         e.stopPropagation()
         e.preventDefault()
 
-        if(error || !isReady) {
+        if (error || !isReady) {
             return
         }
 
-        if(playState === 1) {
+        if (playState === 1) {
 
             setPlayState(2)
 
             try {
                 await audioDomRef.current.pause()
-            } catch(error) {
+            } catch (error) {
                 console.log(error)
             }
 
-        } else if(playState === 2) {
+        } else if (playState === 2) {
 
             setPlayState(1)
 
             try {
                 await audioDomRef.current.play()
-            } catch(error) {
+            } catch (error) {
                 console.log(error)
             }
 
@@ -117,13 +117,13 @@ export default function AudioModal({ file, onClose }) {
 
             try {
                 await audioDomRef.current.play()
-            } catch(error) {
+            } catch (error) {
                 console.log(error)
             }
 
         }
     }
-    
+
     return (
         <div className={classes.container} onClick={onClose}>
             <div className={classes.center} onClick={handleClick}>
