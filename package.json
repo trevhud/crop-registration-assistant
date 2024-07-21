@@ -1,9 +1,9 @@
 {
   "name": "crop-registration-assistant",
   "version": "0.0.1",
-  "description": "",
+  "description": "Dictation of crop registration values to produce strucutred JSON",
   "scripts": {
-    "dev": "next dev -p 3005",
+    "dev": "next dev",
     "dev:api": "node --inspect=9230 server.js",
     "build": "next build",
     "start": "next start",

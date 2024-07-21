@@ -8,6 +8,7 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
+  reactStrictMode: true,
   webpack: function(config) {
     config.module.rules.push({
       test: /\.md$/,
@@ -29,10 +30,7 @@ const nextConfig = {
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,
   },
-  trailingSlash: true,
-  experimental: {
-    // appDir: true,
-  },
+  trailingSlash: true
 };
 
 module.exports = nextConfig;
