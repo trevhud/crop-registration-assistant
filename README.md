@@ -1,4 +1,4 @@
-openai-whisper-api
+crop-registration-assistant
 ====
 
 This is a sample speech transcription web application implementing `OpenAI` [Speech to Text API](https://platform.openai.com/docs/guides/speech-to-text) based on [Whisper](https://openai.com/research/whisper), an automatic speech recognition (ASR) system, built using [Next 13](https://nextjs.org/), the `React` framework.
