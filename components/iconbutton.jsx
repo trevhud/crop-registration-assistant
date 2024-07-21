@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './/iconbutton.module.css'
+import classes from './iconbutton.module.css'
 
 function IconButton({ disabled, children, size = 24, onClick = undefined }) {
     return (

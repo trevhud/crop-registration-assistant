@@ -10,7 +10,7 @@ import PauseIcon from './pause2'
 
 import AnimatedBars from './animatedBars'
 
-import classes from './/startbutton.module.css'
+import classes from './startbutton.module.css'
 
 const colorTypes = {
     default: '#666666',

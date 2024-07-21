@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import DeleteIcon from './delete'
 
-import classes from './/transcript.module.css'
+import classes from './transcript.module.css'
 
 const formatNumber = (n) => n < 10 ? '0' + n : n
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import classes from './/snackbar.module.css'
+import classes from './snackbar.module.css'
 
 export default function SnackBar({ text = '', onClose = undefined }) {
 

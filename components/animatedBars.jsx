@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './/animatedBars.module.css'
+import classes from './animatedBars.module.css'
 
 export default function AnimatedBars(props) {
 

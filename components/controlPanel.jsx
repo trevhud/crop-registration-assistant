@@ -6,7 +6,7 @@ import SignalIcon from './signal'
 
 import StartButton, { startStates } from './startbutton'
 
-import classes from './/controlPanel.module.css'
+import classes from './controlPanel.module.css'
 
 export default function ControlPanel({
     disabled = false,

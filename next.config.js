@@ -30,7 +30,7 @@ const nextConfig = {
   serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,
   },
-  trailingSlash: true
+  // trailingSlash: true
 };
 
 module.exports = nextConfig;

@@ -5,7 +5,7 @@ import PlayOffIcon from './playoff'
 import PlayIcon from './play'
 import PauseIcon from './pause'
 
-import classes from './/audiomodal.module.css'
+import classes from './audiomodal.module.css'
 
 export default function AudioModal({ file, onClose }) {
 
