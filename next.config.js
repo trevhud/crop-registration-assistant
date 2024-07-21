@@ -9,9 +9,9 @@ const securityHeaders = [
 
 const nextConfig = {
   reactStrictMode: true,
-  generateViewport: () => ({
-    viewport: 'width=device-width, initial-scale=1',
-  }),
+  // generateViewport: () => ({
+  //   viewport: 'width=device-width, initial-scale=1',
+  // }),
   // webpack: function(config) {
   //   config.module.rules.push({
   //     test: /\.md$/,

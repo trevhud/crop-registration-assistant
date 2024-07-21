@@ -1,6 +1,12 @@
-import { NextResponse } from "next/server";
+// app/_middleware.js or pages/_middleware.js
+import { NextResponse } from 'next/server';
 
-export function middleware(request) {
-  console.log("MIDDLEWARE !!!", request.nextUrl.pathname);
+export function middleware(req) {
+  const url = req.nextUrl.clone();
+
+  if (url.pathname.startsWith('/_next/static/')) {
+    return NextResponse.next();
+  }
+
   return NextResponse.next();
 }
