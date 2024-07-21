@@ -8,8 +8,7 @@ const dev = process.env.NODE_ENV !== 'production'
 const hostname = '192.168.1.80'
 const port = 3006
 
-const app = next({ dev })
-// const app = next({ dev, hostname, port })
+const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
 
 const httpsOptions = {

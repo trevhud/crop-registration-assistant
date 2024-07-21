@@ -388,6 +388,8 @@ export default function MainPage() {
 
             const structuredResponse = await sendTranscript(data)
 
+            console.log('structuredResponse: ', JSON.stringify(structuredResponse))
+
             // merge the result and structuredResponse objects
             const merged = { ...result, ...structuredResponse }
 
