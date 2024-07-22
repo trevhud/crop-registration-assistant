@@ -73,15 +73,16 @@ export async function POST(req) {
      * As for the min file size value, it is based on my testing.
      * There is probably a better way to check if the file has no audio data.
      */
-    const minFileSize = 18000 // bytes
-    const stats = fs.statSync(outFile)
+    
+    // const minFileSize = 18000 // bytes
+    // const stats = fs.statSync(outFile)
 
-    if(parseInt(stats.size) < minFileSize) {
+    // if(parseInt(stats.size) < minFileSize) {
 
-        return new Response('Bad Request', {
-            status: 400,
-        })
-    }
+    //     return new Response('Bad Request', {
+    //         status: 400,
+    //     })
+    // }
 
     const flagDoNotUseApi = process.env?.DO_NOT_USE_API === 'true'
 
