@@ -1,13 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 import { exec } from 'child_process'
-//import axios from 'axios'
-//import FormData from 'form-data'
 import { cleanInput } from '../../../lib/utils'
-
 import { whisper } from '../../../services/openai'
 
-const uploadPath = 'tmp'
+const uploadPath = '/tmp/'
 
 export async function POST(req) {
 
@@ -31,12 +28,12 @@ export async function POST(req) {
 
     const buffer = Buffer.from( await blob.arrayBuffer() )
     const filename = `${name}.webm`
-    let filepath = `${path.join(uploadPath, filename)}`
+    let filepath = uploadPath + filename
     
     fs.writeFileSync(filepath, buffer)
 
     // remove silence part of the audio
-    let outFile = `${path.join(uploadPath, `out-${filename}`)}`
+    let outFile = uploadPath + 'out-' + filename
     const retval = await new Promise((resolve, reject) => {
 
         //const sCommand = `ffmpeg -i ${filepath} -af silenceremove=start_periods=1:start_silence=0.1:start_threshold=-50dB:detection=peak,aformat=dblp,areverse,silenceremove=start_periods=1:start_silence=0.1:start_threshold=-50dB:detection=peak,aformat=dblp,areverse ${outFile}`
