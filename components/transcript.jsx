@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import DeleteIcon from './delete'
 
 import classes from './transcript.module.css'
+import { transcriptionToMessage } from '../services/transcription'
 
 const formatNumber = (n) => n < 10 ? '0' + n : n
 
@@ -38,22 +39,7 @@ export default function Transcript({
     onDelete = undefined,
 }) {
 
-    let items = []
-    let index = -1
-    let flag = false
-
-    const tokens = data.split("\n")
-    for (let i = 0; i < tokens.length; i++) {
-        const s = tokens[i].trim()
-        if (s.indexOf(':') > 0 && s.indexOf('-->') > 0) {
-            index++
-            items.push({ timestamp: s, text: '' })
-            flag = true
-        } else if (flag) {
-            items[index].text = s
-            flag = false
-        }
-    }
+    const items = transcriptionToMessage(data)
 
     const handleDelete = (e) => {
         e.stopPropagation()

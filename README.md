@@ -152,22 +152,6 @@ Audio data is saved as webm.
   npm install openai
   ```
 
-- [Form-Data](https://github.com/form-data/form-data#readme), library to create readable `multipart/form-data` streams. `Whisper API` currently only has python and curl implementations. Since [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData) does not exist inside `route handler` so we need an alternative.
-
-  ***Deprecation note:*** _This library is no longer used and has been superseded by the OpenAI Node.js library._
-
-  ```sh
-  npm install form-data
-  ```
-
-- [Axios](https://axios-http.com/), promise based HTTP client for the browser and node.js. As alternative to `curl`, I tried using just plain `fetch` but I was encountering problem when attaching the form data. So I will be using `axios` instead to submit request to `Whisper API` endpoint.
-
-  ***Deprecation note:*** _This library is no longer used and has been superseded by the OpenAI Node.js library._
-
-  ```sh
-  npm install axios
-  ```
-
 # Next 13 Route Handler + File Upload
 
 In my previous Next.js project, I was using `middleware` (multer and next-connect) to handle `file upload` to the API route. But for `Next 13` route handler, it is no longer necessary. You can read the uploaded file as `Blob` directly from the `FormData` in the request object and just save it manually.
