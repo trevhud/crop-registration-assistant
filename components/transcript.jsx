@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import DeleteIcon from './delete'
+import DeleteIcon from './icons/delete'
 
 import classes from './transcript.module.css'
 import { transcriptionToMessage } from '../services/transcription'

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import SettingsIcon from './settings'
-import SignalIcon from './signal'
+import SettingsIcon from './icons/settings'
+import SignalIcon from './icons/signal'
 
 import StartButton, { startStates } from './startbutton'
 

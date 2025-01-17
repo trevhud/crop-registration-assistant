@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import MicrophoneIcon from './microphone'
-import MicrophoneOffIcon from './microphoneOff'
+import MicrophoneIcon from './icons/microphone'
+import MicrophoneOffIcon from './icons/microphoneOff'
 
-import PlayIcon from './play'
-import ArrowIcon from './arrow'
-import PauseIcon from './pause2'
+import PlayIcon from './icons/play'
+import ArrowIcon from './icons/arrow'
+import PauseIcon from './icons/pause2'
 
 import AnimatedBars from './animatedBars'
 

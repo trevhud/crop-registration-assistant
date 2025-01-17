@@ -3,14 +3,15 @@
   "version": "0.0.1",
   "description": "Dictation of crop registration values to produce strucutred JSON",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000",
     "dev:api": "node --inspect=9230 server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "serve": "node server.js",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "clean": "rm -rf .next node_modules"
   },
   "dependencies": {
     "axios": "^1.7.2",

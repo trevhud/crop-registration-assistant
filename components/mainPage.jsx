@@ -18,6 +18,8 @@ import Transcript from './transcript'
 import { useAppStore } from '../stores/appStore'
 import { useAppData } from '../stores/appData'
 
+import DataSheet from './dataSheet'
+
 export default function MainPage() {
 
     const dataCount = useAppData((state) => state.count)
@@ -95,7 +97,7 @@ export default function MainPage() {
         setTranscripts(dataItems)
 
         setTimeout(() => {
-            listRef.current.scrollTop = listRef.current.scrollHeight
+            listRef.current.scrollTop = listRef?.current?.scrollHeight
         }, 900)
 
     }, [dataCount, dataItems])
@@ -507,27 +509,27 @@ export default function MainPage() {
                     </div>
                 }
                 {
-                    (isMounted && isReady && transcripts.length === 0) &&
-                    <div className={classes.mainError}>
-                        <span className={classes.info}>No transcripts</span>
-                    </div>
-                }
-                {
-                    (isMounted && isReady && transcripts.length > 0) &&
-                    <div className={classes.list}>
-                        {
-                            transcripts.map((item) => {
-                                return (
-                                    <Transcript
-                                        key={item.filename}
-                                        {...item}
-                                        onClick={() => handleClickTranscript(item.filename)}
-                                        onDelete={handleDelete}
-                                    />
-                                )
-                            })
-                        }
-                    </div>
+
+                    (isMounted && isReady) &&
+                    <DataSheet transcripts={transcripts} />
+
+                    // {
+                    //     (isMounted && isReady && transcripts.length > 0) &&
+                    //     <div className={classes.list}>
+                    //         {
+                    //             transcripts.map((item) => {
+                    //                 return (
+                    //                     <Transcript
+                    //                         key={item.filename}
+                    //                         {...item}
+                    //                         onClick={() => handleClickTranscript(item.filename)}
+                    //                         onDelete={handleDelete}
+                    //                     />
+                    //                 )
+                    //             })
+                    //         }
+                    //     </div>
+                    // }
                 }
             </div>
             <div className={classes.control}>

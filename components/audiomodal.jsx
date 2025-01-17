@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import PlayOffIcon from './playoff'
-import PlayIcon from './play'
-import PauseIcon from './pause'
+import PlayOffIcon from './icons/playoff'
+import PlayIcon from './icons/play'
+import PauseIcon from './icons/pause'
 
 import classes from './audiomodal.module.css'
 
